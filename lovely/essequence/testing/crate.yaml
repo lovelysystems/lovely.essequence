@@ -1,0 +1,15 @@
+es:
+    api:
+        enabled: true
+discovery:
+    type: zen
+    zen:
+        ping:
+            multicast:
+                enabled:  false
+
+script:
+    disable_dynamic: false
+
+cluster:
+    name: lovely.crate-essequence.testing
