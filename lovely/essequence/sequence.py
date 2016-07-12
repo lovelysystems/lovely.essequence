@@ -116,7 +116,6 @@ INDEX_SETTINGS = """
     "mappings": {
         "iid": {
             "_all": {"enabled": 0},
-            "_type": {"index": "no"},
             "dynamic": "strict",
             "properties": {
                 "iid": {
