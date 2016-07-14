@@ -138,8 +138,7 @@ def testing_reset_sequences():
     """
     global SEQUENCES
     for name, data in SEQUENCES.iteritems():
-        data = SEQUENCES[name]
-        data['bulk'] = None
+        data['bulk'] = []
         data['exists'] = False
     es = Sequence.ES
     es.indices.delete(index=INDEX_NAME, ignore=404)
