@@ -5,6 +5,9 @@ Changes for lovely.essequence
 unreleased
 ==========
 
+- made the sequence index crate compatible
+- renamed sequence index
+
 2016/07/12 0.0.2
 ================
 

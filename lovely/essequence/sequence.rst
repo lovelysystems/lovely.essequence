@@ -12,6 +12,10 @@ processes.
     
         script.disable_dynamic: false
 
+    For elasticsearch version > 1.6:
+
+        script.engine.groovy.inline.update: on
+
 The sequences must be assigned to an elasticsearch client instance::
 
     >>> from elasticsearch import Elasticsearch

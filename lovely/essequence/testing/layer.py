@@ -12,26 +12,23 @@ project_root = os.path.dirname(
 print project_root
 
 
-crate_settings = os.path.join(here, 'crate.yaml')
+crate_settings = os.path.join(here, 'crate.yml')
 
 crate_setup_dir = os.path.join(here, 'sql')
 crash_path = os.path.join(project_root, 'bin', 'crash')
 crate_cleanup = os.path.join(project_root, 'bin', 'crate_cleanup')
 crate_setup = os.path.join(project_root, 'bin', 'crate_setup')
-
-jinja_params = os.path.join(here, 'sqlparams.py')
-
-
-def crate_path(*parts):
-    return os.path.join(project_root, 'parts', 'crate', *parts)
+crate_home = os.path.join(project_root, 'parts', 'crate')
 
 # crate Layer
+host = '127.0.0.1'
 port = 18990
 
 crate_layer = CrateLayer('crate',
-                         crate_home=crate_path(),
+                         crate_home=crate_home,
                          crate_config=crate_settings,
-                         crate_exec=crate_path('bin', 'crate'),
-                         port=port)
-crate_host = "127.0.0.1:%s" % port
+                         host=host,
+                         port=port,
+                         verbose=True)
+crate_host = host + ":" + str(port)
 crate_url = "http://%s" % crate_host

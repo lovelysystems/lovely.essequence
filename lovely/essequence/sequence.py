@@ -72,6 +72,7 @@ class Sequence(object):
                         "bulk_size": self.bulk_size
                     },
                     "upsert": {
+                        'name': self.name,
                         'iid': self.bulk_size
                     },
                 },
@@ -105,8 +106,8 @@ class Sequence(object):
         data['exists'] = True
 
 
-INDEX_NAME = 'lc_iidsequences'
-INDEX_TYPE = 'iid'
+INDEX_NAME = 'lovely_essequences'
+INDEX_TYPE = 'default'
 INDEX_SETTINGS = """
 {
     "settings": {
@@ -114,10 +115,13 @@ INDEX_SETTINGS = """
         "auto_expand_replicas": "0-all"
     },
     "mappings": {
-        "iid": {
+        "default": {
             "_all": {"enabled": 0},
             "dynamic": "strict",
             "properties": {
+                "name": {
+                    "type": "string"
+                },
                 "iid": {
                     "type": "long",
                     "index": "no"

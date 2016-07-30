@@ -8,8 +8,12 @@ discovery:
             multicast:
                 enabled:  false
 
+# at least groovy update must be switched on
 script:
-    disable_dynamic: false
+    engine:
+        groovy:
+            inline:
+                update: on
 
 cluster:
     name: lovely.crate-essequence.testing
