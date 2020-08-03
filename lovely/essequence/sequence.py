@@ -31,7 +31,7 @@ class Sequence(object):
         else:
             self.transform = transform
 
-    def next(self):
+    def __next__(self):
         """Provide and consume the next id
         """
         with self._get_lock():
@@ -81,7 +81,7 @@ class Sequence(object):
                 fields='iid',
             )
             iid = result['get']['fields']['iid'][0]
-            data['bulk'] = range(iid, iid - self.bulk_size, -1)
+            data['bulk'] = list(range(iid, iid - self.bulk_size, -1))
         return data['bulk']
 
     def _ensure_exists(self):
@@ -141,7 +141,7 @@ def testing_reset_sequences():
         processes use the sequence.
     """
     global SEQUENCES
-    for name, data in SEQUENCES.iteritems():
+    for name, data in SEQUENCES.items():
         data['bulk'] = []
         data['exists'] = False
     es = Sequence.ES

@@ -9,9 +9,6 @@ project_root = os.path.dirname(
                         os.path.dirname(
                             __file__
                         ))))
-print project_root
-
-
 crate_settings = os.path.join(here, 'crate.yml')
 
 crate_setup_dir = os.path.join(here, 'sql')
